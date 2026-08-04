@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <title>Login -warung ABC</title>
+    <title>Login - warung ABC</title>
 </head>
 <body>
-   <h1>Login AplikasiKasir Warung ABC</h1>
+   <h1>Login Aplikasi Kasir Warung ABC</h1>
 
    <?php
    session_start();
@@ -24,12 +24,12 @@
 <tr>
     <td>Pasword</td>
     <td>:</td>
-    <td><input type="password" name="pasword" ></td>
+    <td><input type="password" name="password" ></td>
 </tr>
 <tr>
-    <td colspan="3"></td>
+    <td colspan="3">
     <input type="submit"value="Login">
-</tr>
+</td>
 </table>
 </form>
 </body>

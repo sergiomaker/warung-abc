@@ -4,15 +4,15 @@ session_start();
 include 'config/koneksi.php';
 
 $username = mysqli_real_escape_string($koneksi, $_POST['username']);
-$pasword = $_POST['pasword'];
+$password = $_POST['password'];
 
-$ql ="SELECT * FROM tbl_user WHERE username = '$username'";
-$hasil = mysqli_query($koneksi,$ql);
+$sql ="SELECT * FROM tbl_user WHERE username = '$username'";
+$hasil = mysqli_query($koneksi,$sql);
 
 if (mysqli_num_rows($hasil) == 1) {
     $data = mysqli_fetch_assoc($hasil);
-    if(pasword_verify($pasword,$data['pasword'])) {
-    // pasword cocok,buat session
+    if(password_verify($password,$data['password'])) {
+    // password cocok,buat session
     $_SESSION['login'] =true;
     $_SESSION['id_user'] =$data['id_user'];
     $_SESSION['nama_lengkap'] =$data['nama_lengkap'];
