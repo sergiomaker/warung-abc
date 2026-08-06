@@ -11,24 +11,30 @@ $hasil = mysqli_query($koneksi,$sql);
 
 if (mysqli_num_rows($hasil) == 1) {
     $data = mysqli_fetch_assoc($hasil);
-    if(password_verify($password,$data['password'])) {
-    // password cocok,buat session
-    $_SESSION['login'] =true;
-    $_SESSION['id_user'] =$data['id_user'];
-    $_SESSION['nama_lengkap'] =$data['nama_lengkap'];
-    $_SESSION['role'] =$data['role'];
 
-    //CATAT aktivitas ke tbl_log
-    $id_user =$data['id_user'];
-    $waktu =date('Y-m-d H:i;S');
-    $log .= "VALUES ('$id_user','login','$waktu')";
-    mysqli_query($koneksi,$log);
-    header("Location: dashboard.php");
-    exit;
+    if(password_verify($password,$data['password'])) {
+        // password cocok,buat session
+        $_SESSION['login'] =true;
+        $_SESSION['id_user'] =$data['id_user'];
+        $_SESSION['nama_lengkap'] =$data['nama_lengkap'];
+        $_SESSION['role'] =$data['role'];
+
+        //catat aktivitas ke tbl_log
+        $id_user =$data['id_user'];
+        $waktu =date('Y-m-d H:i;S');
+        $log ="INSERT INTO tbl_log (id_user, aktivitas,waktu)";
+        $log .= "VALUES ('$id_user','login','$waktu')";
+        mysqli_query($koneksi,$log);
+        header("Location: dashboard.php");
+        exit;
     }else{
-        $_SESSION['pesan_error'] ='PASSWORD SALAH!';
-    header('Location: Login.php');
-    exit;
+        $_SESSION['pesan_error'] ='pasworld salah!';
+        header('Location: Login.php');
+        exit;
     }
-}
+
+} else {
+    $_SESSION['pesan_error'] = 'username tidak ditemukan!';
+    header('Location: login.php');
+    }
 ?>

@@ -1,10 +1,14 @@
 <?php
-//config/koneksi.php
+// config/koneksi.php
 
-$koneksi = mysqli_connect("localhost", "root", "","warung_abc");
+$host     = 'localhost';
+$user     = 'root';
+$password = '';
+$database = 'warung_abc';
+
+$koneksi  = mysqli_connect($host, $user, $password, $database);
 
 if (!$koneksi) {
-    die('koneksi database gagal: ' . mysqli_conect_eror());
-
+    die('Koneksi database gagal: ' . mysqli_connect_error());
 }
 ?>

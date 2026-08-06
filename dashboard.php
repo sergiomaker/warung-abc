@@ -1,5 +1,5 @@
 <?php
-//dashboard.php
+// dashboard.php
 include 'includes/cek_session.php';
 ?>
 <!DOCTYPE html>
@@ -13,6 +13,8 @@ include 'includes/cek_session.php';
 
     <ul>
         <?php if ($_SESSION['role']== 'admin' || $_SESSION['role'] == 'gudang') {?>
+         <li><a href="data_barang.php">Data barang</a></li>
+    <?php } ?>     
         <li><a href="transaksi.php">transaksi Kasir</li>
         <li><a href="riwayat_transaksi.php">Riwayat transaksi</a><li>
     <?php } ?>

@@ -9,7 +9,7 @@
    <?php
    session_start();
    if (isset($_SESSION['pesan_error'])){
-    echo '<P>'. $_SESSION['pesan_eror'] . '</P>';
+    echo '<P>'. $_SESSION['pesan_error'] . '</P>';
     unset($_SESSION['pesan_eror']);
    }
    ?>
